@@ -174,31 +174,93 @@ header{height:100vh}
    COUPLE IMAGE
    ===================== */
 .couple-glow{
-  border-radius:50%;
+  width:100%;
+  height:auto;
+  max-height:90vh;
+  object-fit:cover;
+  border:3px solid #D4AF37;
   animation:glowPulse 4.5s ease-in-out infinite;
 }
 @keyframes glowPulse{
-  0%{box-shadow:0 0 20px rgba(212,175,55,.25)}
-  50%{box-shadow:0 0 35px rgba(212,175,55,.45)}
-  100%{box-shadow:0 0 20px rgba(212,175,55,.25)}
+  0%{box-shadow:inset 0 0 30px rgba(212,175,55,.15)}
+  50%{box-shadow:inset 0 0 50px rgba(212,175,55,.25)}
+  100%{box-shadow:inset 0 0 30px rgba(212,175,55,.15)}
+}
+@media(max-width:768px){
+  .couple-glow{
+    max-height:45vh;
+  }
 }
 @media(hover:hover){
-  .couple-glow:hover{transform:scale(1.05)}
+  .couple-glow:hover{opacity:0.95}
+}
+.couple-section{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 /* =====================
    MOBILE MOTION REDUCE
    ===================== */
 @media(max-width:768px){
-  .petal,.float{display:none}
+  .petal{display:none}
+  .float{animation:none}
   *{transition-duration:.4s!important}
+  header{padding:1.5rem 1rem !important}
+  h1{font-size:3rem !important;line-height:1.3 !important}
+  h2{font-size:1.875rem !important;line-height:1.3 !important}
+  h3{font-size:1.5rem !important}
+  .text-2xl{font-size:1.375rem !important}
+  .text-3xl{font-size:1.625rem !important}
+  .text-4xl{font-size:1.875rem !important}
+  .text-5xl{font-size:2.25rem !important}
+  .text-lg{font-size:1rem !important}
+  p{line-height:1.7 !important}
+  .py-20{padding:1.5rem 0 !important}
+  .py-16{padding:1rem !important}
+  .px-6{padding:0 1rem !important}
+  .mb-8{margin-bottom:1.5rem !important}
+  .mb-4{margin-bottom:1rem !important}
+  .mb-6{margin-bottom:1.25rem !important}
+  .max-w-2xl{padding:0 1rem !important}
 }
 /* SECTION BACKGROUNDS */
 .section-soft-gold{
   background:linear-gradient(to bottom,#FFF6DC,#FFEFC4);
+  padding:2rem 2rem !important;
+  position:relative;
+  margin-bottom:1.5rem;
+}
+.section-soft-gold::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:10%;
+  right:10%;
+  height:1px;
+  background:linear-gradient(to right,transparent,#D4AF37,transparent);
 }
 .section-soft-cream{
   background:linear-gradient(to bottom,#FFFDF5,#FFF3D6);
+  padding:2rem 2rem !important;
+  position:relative;
+  margin-bottom:1.5rem;
+}
+.section-soft-cream::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:10%;
+  right:10%;
+  height:1px;
+  background:linear-gradient(to right,transparent,#D4AF37,transparent);
+}
+@media(max-width:768px){
+  .section-soft-gold,.section-soft-cream{
+    padding:2rem 1rem !important;
+    margin-bottom:1rem;
+  }
 }
 
 </style>
@@ -213,14 +275,14 @@ header{height:100vh}
 </div>
 
 <!-- HERO -->
-<header class="relative flex flex-col items-center justify-center text-center p-6 bg-cover bg-center"
+<header class="relative flex flex-col items-center justify-center text-center pt-32 pb-16 px-6 bg-cover bg-center"
 style="background-image:linear-gradient(rgba(255,253,245,.95),rgba(255,253,245,.95)),
 url('https://images.unsplash.com/photo-1583934555026-63b5b46e5200');">
 
 <div id="petal-container" class="absolute inset-0 overflow-hidden"></div>
 
 <img src="images/ganesh.png" id="ganeshIcon"
-class="w-40 md:w-56 ganesh-glow float ganesh-scroll mb-4">
+class="w-56 md:w-80 ganesh-glow float ganesh-scroll mb-0 md:mb-1">
 
 <!-- KUMKUM & HALDI -->
 <div class="tikka-wrap">
@@ -267,74 +329,183 @@ class="w-40 md:w-56 ganesh-glow float ganesh-scroll mb-4">
   ०९ मे २०२६ · सायं. ७:००
 </p>
 
-<p data-lang="en" class="uppercase tracking-widest text-gray-600 reveal">
+<p data-lang="en" class="uppercase tracking-widest text-gray-600 reveal mb-20">
   Kamshet, Maharashtra
 </p>
 
-<p data-lang="mr" class="uppercase tracking-widest text-gray-600 reveal-mr" style="display:none">
+<p data-lang="mr" class="uppercase tracking-widest text-gray-600 reveal-mr mb-20" style="display:none">
   कामशेत, महाराष्ट्र
 </p>
 </header>
 
 <!-- COUPLE -->
-<section class="py-20 text-center reveal section-soft-gold">
-  <h2 data-lang="en" class="font-['Great_Vibes'] text-5xl text-[#800000]">The Happy Couple</h2>
-  <h2 data-lang="mr" class="font-mr-title text-5xl text-[#800000] reveal-mr" style="display:none">
-    सुखी दांपत्य
+<section class="couple-section text-center reveal section-soft-gold" style="padding-top:2rem !important;">
+  <div class="w-full">
+    <img src="images/couple.jpg" class="couple-glow w-full">
+  </div>
+
+  <div class="py-16 px-6 max-w-2xl">
+    <h2 data-lang="en" class="font-['Great_Vibes'] text-5xl text-[#800000] mb-4">The Happy Couple</h2>
+    <h2 data-lang="mr" class="font-mr-title text-5xl text-[#800000] reveal-mr mb-4" style="display:none">
+      सुखी दांपत्य
+    </h2>
+
+    <p data-lang="en" class="text-4xl font-['Great_Vibes'] text-[#800000] mb-3">
+      Dnyanesh & Laxmi
+    </p>
+
+    <p data-lang="mr" class="font-mr-names text-4xl text-[#800000] reveal-mr mb-3" style="display:none">
+      ज्ञानेश & लक्ष्मी
+    </p>
+
+    <p data-lang="en" class="italic text-gray-600 mb-6">
+      Two hearts, one sacred bond.
+    </p>
+
+    <p data-lang="mr" class="font-mr-body italic text-gray-600 reveal-mr mb-6" style="display:none">
+      दोन हृदये, एक पवित्र नाते.
+    </p>
+
+    <p data-lang="en" class="text-gray-700 mb-0">
+    Son of <strong style="color:#800000">Ganpat Kedari & Subhadra Kedari</strong><br>
+    Daughter of <strong style="color:#800000">Ashok Nirmal & Seema Nirmal</strong>
+    </p>
+
+    <p data-lang="mr" class="font-mr-body text-gray-700 reveal-mr mb-0" style="display:none">
+    <strong style="color:#800000">श्री. गणपत केदारी व सौ. सुभद्रा केदारी</strong> यांचे सुपुत्र<br>
+    <strong style="color:#800000">श्री. अशोक निर्मल व सौ. सीमा निर्मल</strong> यांची सुकन्या
+    </p>
+  </div>
+</section>
+
+<!-- HALDI CEREMONY -->
+<section class="py-20 text-center reveal section-soft-cream">
+  <h2 data-lang="en" class="font-['Great_Vibes'] text-5xl text-[#800000] mb-8">Haldi Ceremony</h2>
+  <h2 data-lang="mr" class="font-mr-title text-5xl text-[#800000] reveal-mr mb-8" style="display:none">
+    हळद समारंभ
   </h2>
 
-  <img src="images/couple.jpg" class="w-80 h-80 mx-auto my-8 couple-glow">
+  <div class="mb-8">
+    <img src="images/haldi.png" class="couple-glow w-full max-h-screen object-cover">
+  </div>
 
-  <p data-lang="en" class="text-4xl font-['Great_Vibes'] text-[#800000]">
-    Dnyanesh & Laxmi
-  </p>
+  <div class="max-w-2xl mx-auto px-6">
+    <div class="mb-8">
+      <h3 data-lang="en" class="text-3xl font-['Great_Vibes'] text-[#D4AF37] mb-4">
+        Golden Celebration
+      </h3>
+      <h3 data-lang="mr" class="font-mr-names text-3xl text-[#D4AF37] reveal-mr mb-4" style="display:none">
+        सोनेरी समारंभ
+      </h3>
 
-  <p data-lang="mr" class="font-mr-names text-4xl text-[#800000] reveal-mr" style="display:none">
-    ज्ञानेश & लक्ष्मी
-  </p>
+      <p data-lang="en" class="text-lg text-gray-700 leading-relaxed">
+        A cherished pre-wedding ritual adorning the bride with turmeric's golden glow, symbolizing beauty, prosperity, and the joy of beginning a new chapter.
+      </p>
 
-  <p data-lang="en" class="italic text-gray-600">
-    Two hearts, one sacred bond.
-  </p>
+      <p data-lang="mr" class="font-mr-body text-lg text-gray-700 leading-relaxed reveal-mr" style="display:none">
+        लग्न पूर्व एक मूल्यवान परंपरा जिथे वधू हळदीच्या सोनेरी तेजाने सजविली जाते, सौंदर्य, समृद्धी आणि नवीन जीवनाच्या आनंदाचे प्रतीक.
+      </p>
+    </div>
 
-  <p data-lang="mr" class="font-mr-body italic text-gray-600 reveal-mr" style="display:none">
-    दोन हृदये, एक पवित्र नाते.
-  </p>
+    <div class="bg-white bg-opacity-60 rounded-lg p-6 mb-6">
+      <p data-lang="en" class="text-2xl font-['Great_Vibes'] text-[#800000] mb-2">
+        Date & Time
+      </p>
+      <p data-lang="mr" class="font-mr-names text-2xl text-[#800000] reveal-mr mb-2" style="display:none">
+        दिनांक व वेळ
+      </p>
+      
+      <p data-lang="en" class="text-xl text-gray-700 font-semibold">
+        09 May 2026 · 11:00 AM - 12:30 PM
+      </p>
 
-  <p data-lang="en" class="mt-6 text-gray-700">
-  Son of <strong style="color:#800000">Ganpat Kedari & Subhadra Kedari</strong><br>
-  Daughter of <strong style="color:#800000">Ashok Nirmal & Seema Nirmal</strong>
-  </p>
+      <p data-lang="mr" class="font-mr-body text-xl text-gray-700 font-semibold reveal-mr" style="display:none">
+        ०९ मे २०२६ · सकाळी ११:०० - १२:३०
+      </p>
+    </div>
 
-  <p data-lang="mr" class="font-mr-body mt-6 text-gray-700 reveal-mr" style="display:none">
-  <strong style="color:#800000">श्री. गणपत केदारी व सौ. सुभद्रा केदारी</strong> यांचे सुपुत्र<br>
-  <strong style="color:#800000">श्री. अशोक निर्मल व सौ. सीमा निर्मल</strong> यांची सुकन्या
-  </p>
+    <div class="bg-white bg-opacity-60 rounded-lg p-6">
+      <p data-lang="en" class="text-2xl font-['Great_Vibes'] text-[#800000] mb-2">
+        Venue
+      </p>
+      <p data-lang="mr" class="font-mr-names text-2xl text-[#800000] reveal-mr mb-2" style="display:none">
+        स्थळ
+      </p>
+      
+      <p data-lang="en" class="text-lg text-gray-700 mb-4">
+        Hirkani Garden, Kamshet
+      </p>
+
+      <p data-lang="mr" class="font-mr-body text-lg text-gray-700 mb-4 reveal-mr" style="display:none">
+        हिरकणी गार्डन, कामशेत
+      </p>
+
+      <a href="https://www.google.com/maps/search/?api=1&query=Hirkani+Garden+Kamshet"
+         target="_blank"
+         class="inline-block bg-[#800000] text-white px-6 py-2 rounded-full tracking-widest text-sm hover:bg-opacity-90">
+        <span data-lang="en">VIEW MAP</span>
+        <span data-lang="mr" style="display:none">नकाशा पहा</span>
+      </a>
+    </div>
+  </div>
 </section>
 
 <!-- VENUE -->
-<section class="py-20 text-center reveal section-soft-cream">
-  <h2 data-lang="en" class="font-['Great_Vibes'] text-5xl text-[#800000]">Wedding Venue</h2>
-  <h2 data-lang="mr" class="font-mr-title text-5xl text-[#800000] reveal-mr" style="display:none">
+<section class="py-20 text-center reveal section-soft-gold">
+  <h2 data-lang="en" class="font-['Great_Vibes'] text-5xl text-[#800000] mb-6">Wedding Venue</h2>
+  <h2 data-lang="mr" class="font-mr-title text-5xl text-[#800000] reveal-mr mb-6" style="display:none">
     विवाह स्थळ
   </h2>
 
-  <p data-lang="en">Hirkani Garden, Kamshet</p>
-  <p data-lang="mr" class="font-mr-body reveal-mr" style="display:none">
-    हिरकणी गार्डन, कामशेत
-  </p>
+  <div class="max-w-2xl mx-auto px-6">
+    <p data-lang="en" class="text-2xl font-['Great_Vibes'] text-[#800000] mb-4">Hirkani Garden</p>
+    <p data-lang="mr" class="font-mr-names text-2xl text-[#800000] reveal-mr mb-4" style="display:none">
+      हिरकणी गार्डन
+    </p>
 
-  <a href="https://www.google.com/maps/search/?api=1&query=Hirkani+Garden+Kamshet"
-     target="_blank"
-     class="inline-block mt-8 bg-[#800000] text-white px-8 py-3 rounded-full tracking-widest text-sm">
-    <span data-lang="en">VIEW MAP</span>
-    <span data-lang="mr" style="display:none">नकाशा पहा</span>
-  </a>
+    <p data-lang="en" class="text-lg text-gray-700 mb-8 leading-relaxed">
+      Nestled in the serene hills of Kamshet, Hirkani Garden is a picturesque venue perfect for celebrating your special day with family and loved ones.
+    </p>
+    <p data-lang="mr" class="font-mr-body text-lg text-gray-700 mb-8 leading-relaxed reveal-mr" style="display:none">
+      कामशेतच्या शांत टेकड्यांमधये वसलेले हिरकणी गार्डन हे आपल्या विशेष दिनाचे सोहळे कुटुंब आणि प्रियजनांसोबत साजरे करण्यासाठी एक अत्यंत सुंदर स्थळ आहे.
+    </p>
+
+    <div class="bg-white bg-opacity-60 rounded-lg p-8 mb-6">
+      <h3 data-lang="en" class="text-xl font-semibold text-[#800000] mb-3">Location Details</h3>
+      <h3 data-lang="mr" class="font-mr-names text-xl text-[#800000] reveal-mr mb-3" style="display:none">स्थान विवरण</h3>
+      
+      <p data-lang="en" class="text-gray-700 mb-2">Kamshet, Maharashtra</p>
+      <p data-lang="mr" class="font-mr-body text-gray-700 reveal-mr" style="display:none">कामशेत, महाराष्ट्र</p>
+    </div>
+
+    <a href="https://www.google.com/maps/search/?api=1&query=Hirkani+Garden+Kamshet"
+       target="_blank"
+       class="inline-block bg-[#800000] text-white px-8 py-3 rounded-full tracking-widest text-sm hover:bg-opacity-90 transition">
+      <span data-lang="en">VIEW ON MAP</span>
+      <span data-lang="mr" style="display:none">नकाशावर पहा</span>
+    </a>
+  </div>
 </section>
 
-<footer class="bg-[#800000] text-[#FFFDD0] py-8 text-center reveal">
-  <p data-lang="en">Thank You</p>
-  <p data-lang="mr" style="display:none">धन्यवाद</p>
+<footer class="bg-[#800000] text-[#FFFDD0] py-12 text-center reveal">
+  <div class="max-w-2xl mx-auto px-6">
+    <h3 data-lang="en" class="font-['Great_Vibes'] text-3xl mb-3">Thank You</h3>
+    <h3 data-lang="mr" class="font-mr-names text-3xl mb-3" style="display:none">धन्यवाद</h3>
+    
+    <p data-lang="en" class="mb-4 text-lg">
+      Your presence will make our celebration complete.
+    </p>
+    <p data-lang="mr" class="font-mr-body mb-4 text-lg" style="display:none">
+      आपल्या उपस्थितीने आमचा सोहळा पूर्ण होईल.
+    </p>
+    
+    <p data-lang="en" class="text-sm opacity-90">
+      Dnyanesh & Laxmi
+    </p>
+    <p data-lang="mr" class="font-mr-names text-sm opacity-90" style="display:none">
+      ज्ञानेश & लक्ष्मी
+    </p>
+  </div>
 </footer>
 
 <audio id="bellSound">
@@ -372,10 +543,30 @@ document.querySelectorAll(".reveal,.reveal-left,.reveal-right,.reveal-mr")
   .forEach(el=>observer.observe(el));
 
 /* GANESH FADE */
+let lastScrollY = 0;
 window.addEventListener("scroll",()=>{
   const g=document.getElementById("ganeshIcon");
   const s=Math.min(window.scrollY,200);
   g.style.opacity=1-s/200;
+  
+  const isScrollingDown = window.scrollY > lastScrollY;
+  lastScrollY = window.scrollY;
+  
+  /* SECTION TEXT FADE */
+  document.querySelectorAll("section").forEach(section=>{
+    const rect=section.getBoundingClientRect();
+    const sectionTop=rect.top;
+    const sectionHeight=rect.height;
+    
+    /* Fade out when section scrolls past top of viewport (scrolling down only) */
+    if(sectionTop<0 && isScrollingDown){
+      const fadeDistance=Math.min(Math.abs(sectionTop),sectionHeight);
+      const opacity=Math.max(0,1-(fadeDistance/500));
+      section.style.opacity=opacity;
+    }else{
+      section.style.opacity=1;
+    }
+  });
 });
 
 /* SOUND SYNC */
