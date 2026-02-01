@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Shubh Vivah | Dnyanesh & Laxmi</title>
+
+<!-- SEO + WhatsApp -->
+<meta name="description" content="Wedding invitation of Dnyanesh Ganpat Kedari & Laxmi Ashok Nirmal | 09 May 2026 | Hirkani Garden, Kamshet">
+<meta property="og:title" content="Wedding Invitation | Dnyanesh & Laxmi">
+<meta property="og:description" content="With the blessings of our families, we invite you to celebrate our wedding.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Great+Vibes&family=Lato&family=Noto+Serif+Devanagari&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
+
+<style>
+/* =====================
+   BASE
+   ===================== */
+body{
+  background:#FFFDF5;
+  font-family:Lato,sans-serif;
+  overflow-x:hidden;
+}
+header{height:100vh}
+
+/* =====================
+   GANESH + HERO
+   ===================== */
+.ganesh-glow{
+  filter:
+    drop-shadow(0 0 10px rgba(212,175,55,.7))
+    drop-shadow(0 0 20px rgba(212,175,55,.4));
+}
+.float{animation:floatSlow 4s ease-in-out infinite}
+@keyframes floatSlow{50%{transform:translateY(-8px)}}
+.ganesh-scroll{transition:.4s}
+
+.diya{
+  width:22px;height:22px;border-radius:50%;
+  background:radial-gradient(circle,#ffcc66,#ff9933);
+  box-shadow:0 0 12px orange;
+  animation:flicker 2s infinite alternate;
+}
+@keyframes flicker{from{opacity:.7}to{opacity:1}}
+
+/* =====================
+   PETALS (HERO ONLY)
+   ===================== */
+.petal{
+  position:absolute;
+  top:-10%;
+  pointer-events:none;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+
+/* =====================
+   SCROLL REVEAL (EN)
+   ===================== */
+.reveal,.reveal-left,.reveal-right{
+  opacity:0;
+  transition:1s ease;
+}
+.reveal{transform:translateY(40px)}
+.reveal-left{transform:translateX(-40px)}
+.reveal-right{transform:translateX(40px)}
+.active{opacity:1;transform:none}
+
+/* =====================
+   MARATHI ANIMATION
+   (slower + delayed)
+   ===================== */
+.reveal-mr{
+  opacity:0;
+  transform:scale(.96) translateY(24px);
+  transition:
+    opacity 1.4s ease,
+    transform 1.4s ease;
+  transition-delay:.18s; /* 🔥 Marathi delay */
+}
+.reveal-mr.active{
+  opacity:1;
+  transform:scale(1) translateY(0);
+}
+
+/* =====================
+   MARATHI TYPOGRAPHY
+   ===================== */
+.font-mr-title{
+  font-family:"Tiro Devanagari Marathi",serif;
+  font-weight:700;
+  letter-spacing:.08em;
+  position:relative;
+  text-shadow:
+    0 1px 0 #d4af37,
+    0 2px 6px rgba(212,175,55,.35);
+}
+
+/* underline auto-sizes */
+.font-mr-title::after{
+  content:"";
+  display:block;
+  width:100%;
+  max-width:120px;
+  height:2px;
+  margin:.6rem auto 0;
+  background:linear-gradient(to right,transparent,#D4AF37,transparent);
+  opacity:.85;
+}
+
+.font-mr-names{
+  font-family:"Tiro Devanagari Marathi",serif;
+  font-weight:700;
+  letter-spacing:.05em;
+  text-shadow:
+    0 1px 0 #d4af37,
+    0 3px 8px rgba(212,175,55,.45);
+}
+
+.font-mr-shloka{
+  font-family:"Noto Serif Devanagari",serif;
+  font-weight:500;
+  line-height:1.9;
+}
+
+.font-mr-body{
+  font-family:"Noto Serif Devanagari",serif;
+  font-weight:400;
+  line-height:1.8;
+}
+
+/* responsive spacing */
+@media(max-width:1024px){
+  .font-mr-title{letter-spacing:.06em}
+}
+@media(max-width:640px){
+  .font-mr-title{letter-spacing:.04em}
+}
+
+/* =====================
+   DIVIDER (MANDALA)
+   ===================== */
+.divider{
+  position:relative;
+  width:200px;
+  height:40px;
+  margin:4rem auto;
+}
+.divider svg path{
+  stroke:#D4AF37;
+  stroke-width:2;
+  fill:none;
+  stroke-dasharray:300;
+  stroke-dashoffset:300;
+}
+.divider.active svg path{
+  animation:drawDivider 1.4s ease forwards;
+}
+@keyframes drawDivider{to{stroke-dashoffset:0}}
+
+.divider::after{
+  content:"🔔";
+  position:absolute;
+  left:50%;
+  top:-18px;
+  transform:translateX(-50%) scale(.6);
+  opacity:0;
+}
+.divider.active::after{
+  animation:bellGlow 1.6s ease-out;
+}
+@keyframes bellGlow{
+  30%{opacity:.8;transform:translateX(-50%) scale(1)}
+  100%{opacity:0;transform:translateX(-50%) scale(1.4)}
+}
+
+/* =====================
+   COUPLE IMAGE
+   ===================== */
+.couple-glow{
+  border-radius:50%;
+  animation:glowPulse 4.5s ease-in-out infinite;
+}
+@keyframes glowPulse{
+  0%{box-shadow:0 0 20px rgba(212,175,55,.25)}
+  50%{box-shadow:0 0 35px rgba(212,175,55,.45)}
+  100%{box-shadow:0 0 20px rgba(212,175,55,.25)}
+}
+@media(hover:hover){
+  .couple-glow:hover{transform:scale(1.05)}
+}
+
+/* =====================
+   MOBILE MOTION REDUCE
+   ===================== */
+@media(max-width:768px){
+  .petal,.float{display:none}
+  *{transition-duration:.4s!important}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LANGUAGE TOGGLE -->
+<div class="fixed top-4 right-4 z-50">
+  <button onclick="setLang('en')" class="px-3 py-1 bg-[#800000] text-white text-xs rounded-l">EN</button>
+  <button onclick="setLang('mr')" class="px-3 py-1 bg-[#D4AF37] text-black text-xs rounded-r">मराठी</button>
+</div>
+
+<!-- HERO -->
+<header class="relative flex flex-col items-center justify-center text-center p-6 bg-cover bg-center"
+style="background-image:linear-gradient(rgba(255,253,245,.95),rgba(255,253,245,.95)),
+url('https://images.unsplash.com/photo-1583934555026-63b5b46e5200');">
+
+<div id="petal-container" class="absolute inset-0 overflow-hidden"></div>
+
+<img src="images/ganesh.png" id="ganeshIcon"
+class="w-32 md:w-40 ganesh-glow float ganesh-scroll mb-3">
+
+<div class="flex gap-6 mb-3">
+  <div class="diya"></div><div class="diya"></div>
+</div>
+
+<!-- SHLOKA -->
+<div data-lang="mr">
+  <p class="font-mr-shloka text-[#800000] text-lg reveal-mr">
+    वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।<br>
+    निर्विघ्नं कुरु मे देवा सर्वकार्येषु सर्वदा ॥
+  </p>
+</div>
+
+<div data-lang="en" style="display:none">
+  <p class="text-[#800000] reveal">
+    May Lord Ganesha bless this sacred union.
+  </p>
+</div>
+
+<h2 data-lang="en" class="font-serif text-[#D4AF37] mt-6 reveal">
+  THE WEDDING CELEBRATION OF
+</h2>
+
+<h2 data-lang="mr" class="font-mr-title text-[#800000] mt-6 reveal-mr" style="display:none">
+  विवाह सोहळा
+</h2>
+
+<h1 data-lang="en" class="font-['Great_Vibes'] text-7xl md:text-9xl text-[#800000] reveal">
+  Dnyanesh <span class="text-[#D4AF37]">&</span> Laxmi
+</h1>
+
+<h1 data-lang="mr" class="font-mr-names text-7xl md:text-9xl text-[#800000] reveal-mr" style="display:none">
+  ज्ञानेश <span class="text-[#D4AF37]">&</span> लक्ष्मी
+</h1>
+
+<p data-lang="en" class="text-2xl text-[#800000] reveal">
+  09 May 2026 · 7:00 PM
+</p>
+
+<p data-lang="mr" class="text-2xl text-[#800000] reveal-mr" style="display:none">
+  ०९ मे २०२६ · सायं. ७:००
+</p>
+
+<p data-lang="en" class="uppercase tracking-widest text-gray-600 reveal">
+  Kamshet, Maharashtra
+</p>
+
+<p data-lang="mr" class="uppercase tracking-widest text-gray-600 reveal-mr" style="display:none">
+  कामशेत, महाराष्ट्र
+</p>
+</header>
+
+<!-- DIVIDER -->
+<div class="divider reveal">
+  <svg viewBox="0 0 200 40"><path d="M10 20 Q100 0 190 20"/></svg>
+</div>
+
+<!-- COUPLE -->
+<section class="py-20 text-center reveal">
+  <h2 data-lang="en" class="font-['Great_Vibes'] text-5xl text-[#800000]">The Happy Couple</h2>
+  <h2 data-lang="mr" class="font-mr-title text-5xl text-[#800000] reveal-mr" style="display:none">
+    सुखी दांपत्य
+  </h2>
+
+  <img src="images/couple.jpg" class="w-80 h-80 mx-auto my-8 couple-glow">
+
+  <p data-lang="en" class="text-4xl font-['Great_Vibes'] text-[#800000]">
+    Dnyanesh & Laxmi
+  </p>
+
+  <p data-lang="mr" class="font-mr-names text-4xl text-[#800000] reveal-mr" style="display:none">
+    ज्ञानेश & लक्ष्मी
+  </p>
+
+  <p data-lang="en" class="italic text-gray-600">
+    Two hearts, one sacred bond.
+  </p>
+
+  <p data-lang="mr" class="font-mr-body italic text-gray-600 reveal-mr" style="display:none">
+    दोन हृदये, एक पवित्र नाते.
+  </p>
+
+  <p data-lang="en" class="mt-6 text-gray-700">
+    Son of Ganpat Kedari & Subhadra Kedari<br>
+    Daughter of Ashok Nirmal & Seema Nirmal
+  </p>
+
+  <p data-lang="mr" class="font-mr-body mt-6 text-gray-700 reveal-mr" style="display:none">
+    श्री. गणपत केदारी व सौ. सुभद्रा केदारी यांचे सुपुत्र<br>
+    श्री. अशोक निर्मळ व सौ. सीमा निर्मळ यांची सुकन्या
+  </p>
+</section>
+
+<!-- VENUE -->
+<section class="py-20 text-center reveal">
+  <h2 data-lang="en" class="font-['Great_Vibes'] text-5xl text-[#800000]">Wedding Venue</h2>
+  <h2 data-lang="mr" class="font-mr-title text-5xl text-[#800000] reveal-mr" style="display:none">
+    विवाह स्थळ
+  </h2>
+
+  <p data-lang="en">Hirkani Garden, Kamshet</p>
+  <p data-lang="mr" class="font-mr-body reveal-mr" style="display:none">
+    हिरकणी गार्डन, कामशेत
+  </p>
+
+  <a href="https://www.google.com/maps/search/?api=1&query=Hirkani+Garden+Kamshet"
+     target="_blank"
+     class="inline-block mt-8 bg-[#800000] text-white px-8 py-3 rounded-full tracking-widest text-sm">
+    <span data-lang="en">VIEW MAP</span>
+    <span data-lang="mr" style="display:none">नकाशा पहा</span>
+  </a>
+</section>
+
+<footer class="bg-[#800000] text-[#FFFDD0] py-8 text-center reveal">
+  <p data-lang="en">Thank You</p>
+  <p data-lang="mr" style="display:none">धन्यवाद</p>
+</footer>
+
+<!-- SOFT BELL SOUND -->
+<audio id="bellSound">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_8d6e7e3a41.mp3">
+</audio>
+
+<script>
+/* LANGUAGE */
+function setLang(l){
+  document.querySelectorAll("[data-lang]").forEach(el=>{
+    el.style.display = el.dataset.lang===l ? "block" : "none";
+  });
+}
+setLang("mr");
+
+/* PETALS */
+function createPetal(){
+  const p=document.createElement("div");
+  p.className="petal";
+  p.innerHTML="🌸";
+  p.style.left=Math.random()*100+"%";
+  p.style.fontSize=(12+Math.random()*14)+"px";
+  p.style.animationDuration=(6+Math.random()*6)+"s";
+  document.getElementById("petal-container").appendChild(p);
+  setTimeout(()=>p.remove(),12000);
+}
+setInterval(createPetal,900);
+
+/* SCROLL OBSERVER */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    e.target.classList.toggle("active",e.isIntersecting);
+  });
+},{threshold:.15});
+document.querySelectorAll(".reveal,.reveal-left,.reveal-right,.reveal-mr")
+  .forEach(el=>observer.observe(el));
+
+/* GANESH FADE */
+window.addEventListener("scroll",()=>{
+  const g=document.getElementById("ganeshIcon");
+  const s=Math.min(window.scrollY,200);
+  g.style.opacity=1-s/200;
+});
+
+/* SOUND SYNC (first interaction) */
+let played=false;
+document.addEventListener("click",()=>{
+  if(!played){
+    const b=document.getElementById("bellSound");
+    b.volume=.15;
+    b.play();
+    played=true;
+  }
+});
+</script>
+
+</body>
+</html>
