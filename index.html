@@ -42,13 +42,27 @@ header{height:100vh}
 @keyframes floatSlow{50%{transform:translateY(-8px)}}
 .ganesh-scroll{transition:.4s}
 
-.diya{
-  width:22px;height:22px;border-radius:50%;
-  background:radial-gradient(circle,#ffcc66,#ff9933);
-  box-shadow:0 0 12px orange;
-  animation:flicker 2s infinite alternate;
+/* =====================
+   KUMKUM & HALDI TIKKAS
+   ===================== */
+.tikka-wrap{
+  display:flex;
+  gap:18px;
+  margin-bottom:1rem;
 }
-@keyframes flicker{from{opacity:.7}to{opacity:1}}
+.tikka{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+}
+.tikka.kumkum{
+  background:radial-gradient(circle,#b30000,#7a0000);
+  box-shadow:0 0 10px rgba(179,0,0,.7);
+}
+.tikka.haldi{
+  background:radial-gradient(circle,#ffd84d,#ffb300);
+  box-shadow:0 0 10px rgba(255,179,0,.7);
+}
 
 /* =====================
    PETALS (HERO ONLY)
@@ -77,20 +91,14 @@ header{height:100vh}
 
 /* =====================
    MARATHI ANIMATION
-   (slower + delayed)
    ===================== */
 .reveal-mr{
   opacity:0;
   transform:scale(.96) translateY(24px);
-  transition:
-    opacity 1.4s ease,
-    transform 1.4s ease;
-  transition-delay:.18s; /* 🔥 Marathi delay */
+  transition:opacity 1.4s ease, transform 1.4s ease;
+  transition-delay:.18s;
 }
-.reveal-mr.active{
-  opacity:1;
-  transform:scale(1) translateY(0);
-}
+.reveal-mr.active{opacity:1;transform:scale(1) translateY(0)}
 
 /* =====================
    MARATHI TYPOGRAPHY
@@ -100,12 +108,8 @@ header{height:100vh}
   font-weight:700;
   letter-spacing:.08em;
   position:relative;
-  text-shadow:
-    0 1px 0 #d4af37,
-    0 2px 6px rgba(212,175,55,.35);
+  text-shadow:0 1px 0 #d4af37,0 2px 6px rgba(212,175,55,.35);
 }
-
-/* underline auto-sizes */
 .font-mr-title::after{
   content:"";
   display:block;
@@ -114,36 +118,19 @@ header{height:100vh}
   height:2px;
   margin:.6rem auto 0;
   background:linear-gradient(to right,transparent,#D4AF37,transparent);
-  opacity:.85;
 }
-
 .font-mr-names{
   font-family:"Tiro Devanagari Marathi",serif;
   font-weight:700;
   letter-spacing:.05em;
-  text-shadow:
-    0 1px 0 #d4af37,
-    0 3px 8px rgba(212,175,55,.45);
 }
-
 .font-mr-shloka{
   font-family:"Noto Serif Devanagari",serif;
-  font-weight:500;
   line-height:1.9;
 }
-
 .font-mr-body{
   font-family:"Noto Serif Devanagari",serif;
-  font-weight:400;
   line-height:1.8;
-}
-
-/* responsive spacing */
-@media(max-width:1024px){
-  .font-mr-title{letter-spacing:.06em}
-}
-@media(max-width:640px){
-  .font-mr-title{letter-spacing:.04em}
 }
 
 /* =====================
@@ -206,6 +193,14 @@ header{height:100vh}
   .petal,.float{display:none}
   *{transition-duration:.4s!important}
 }
+/* SECTION BACKGROUNDS */
+.section-soft-gold{
+  background:linear-gradient(to bottom,#FFF6DC,#FFEFC4);
+}
+.section-soft-cream{
+  background:linear-gradient(to bottom,#FFFDF5,#FFF3D6);
+}
+
 </style>
 </head>
 
@@ -225,10 +220,12 @@ url('https://images.unsplash.com/photo-1583934555026-63b5b46e5200');">
 <div id="petal-container" class="absolute inset-0 overflow-hidden"></div>
 
 <img src="images/ganesh.png" id="ganeshIcon"
-class="w-32 md:w-40 ganesh-glow float ganesh-scroll mb-3">
+class="w-40 md:w-56 ganesh-glow float ganesh-scroll mb-4">
 
-<div class="flex gap-6 mb-3">
-  <div class="diya"></div><div class="diya"></div>
+<!-- KUMKUM & HALDI -->
+<div class="tikka-wrap">
+  <div class="tikka kumkum"></div>
+  <div class="tikka haldi"></div>
 </div>
 
 <!-- SHLOKA -->
@@ -240,8 +237,9 @@ class="w-32 md:w-40 ganesh-glow float ganesh-scroll mb-3">
 </div>
 
 <div data-lang="en" style="display:none">
-  <p class="text-[#800000] reveal">
-    May Lord Ganesha bless this sacred union.
+  <p class="font-mr-shloka text-[#800000] text-lg reveal">
+    वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।<br>
+    निर्विघ्नं कुरु मे देवा सर्वकार्येषु सर्वदा ॥
   </p>
 </div>
 
@@ -278,13 +276,8 @@ class="w-32 md:w-40 ganesh-glow float ganesh-scroll mb-3">
 </p>
 </header>
 
-<!-- DIVIDER -->
-<div class="divider reveal">
-  <svg viewBox="0 0 200 40"><path d="M10 20 Q100 0 190 20"/></svg>
-</div>
-
 <!-- COUPLE -->
-<section class="py-20 text-center reveal">
+<section class="py-20 text-center reveal section-soft-gold">
   <h2 data-lang="en" class="font-['Great_Vibes'] text-5xl text-[#800000]">The Happy Couple</h2>
   <h2 data-lang="mr" class="font-mr-title text-5xl text-[#800000] reveal-mr" style="display:none">
     सुखी दांपत्य
@@ -309,18 +302,18 @@ class="w-32 md:w-40 ganesh-glow float ganesh-scroll mb-3">
   </p>
 
   <p data-lang="en" class="mt-6 text-gray-700">
-    Son of Ganpat Kedari & Subhadra Kedari<br>
-    Daughter of Ashok Nirmal & Seema Nirmal
+  Son of <strong style="color:#800000">Ganpat Kedari & Subhadra Kedari</strong><br>
+  Daughter of <strong style="color:#800000">Ashok Nirmal & Seema Nirmal</strong>
   </p>
 
   <p data-lang="mr" class="font-mr-body mt-6 text-gray-700 reveal-mr" style="display:none">
-    श्री. गणपत केदारी व सौ. सुभद्रा केदारी यांचे सुपुत्र<br>
-    श्री. अशोक निर्मळ व सौ. सीमा निर्मळ यांची सुकन्या
+  <strong style="color:#800000">श्री. गणपत केदारी व सौ. सुभद्रा केदारी</strong> यांचे सुपुत्र<br>
+  <strong style="color:#800000">श्री. अशोक निर्मल व सौ. सीमा निर्मल</strong> यांची सुकन्या
   </p>
 </section>
 
 <!-- VENUE -->
-<section class="py-20 text-center reveal">
+<section class="py-20 text-center reveal section-soft-cream">
   <h2 data-lang="en" class="font-['Great_Vibes'] text-5xl text-[#800000]">Wedding Venue</h2>
   <h2 data-lang="mr" class="font-mr-title text-5xl text-[#800000] reveal-mr" style="display:none">
     विवाह स्थळ
@@ -344,13 +337,11 @@ class="w-32 md:w-40 ganesh-glow float ganesh-scroll mb-3">
   <p data-lang="mr" style="display:none">धन्यवाद</p>
 </footer>
 
-<!-- SOFT BELL SOUND -->
 <audio id="bellSound">
   <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_8d6e7e3a41.mp3">
 </audio>
 
 <script>
-/* LANGUAGE */
 function setLang(l){
   document.querySelectorAll("[data-lang]").forEach(el=>{
     el.style.display = el.dataset.lang===l ? "block" : "none";
@@ -387,7 +378,7 @@ window.addEventListener("scroll",()=>{
   g.style.opacity=1-s/200;
 });
 
-/* SOUND SYNC (first interaction) */
+/* SOUND SYNC */
 let played=false;
 document.addEventListener("click",()=>{
   if(!played){
@@ -401,4 +392,3 @@ document.addEventListener("click",()=>{
 
 </body>
 </html>
-
