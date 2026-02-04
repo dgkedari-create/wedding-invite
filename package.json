@@ -1,0 +1,12 @@
+{
+  "name": "wedding-invite",
+  "version": "1.0.0",
+  "description": "Wedding invitation website for Dnyanesh & Laxmi",
+  "scripts": {
+    "build": "echo 'No build needed for static site'",
+    "start": "echo 'Open index.html in browser'"
+  },
+  "keywords": ["wedding", "invitation"],
+  "author": "",
+  "license": "ISC"
+}
