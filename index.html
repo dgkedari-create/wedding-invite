@@ -352,8 +352,29 @@ class="w-56 md:w-80 ganesh-glow float ganesh-scroll mb-0 md:mb-1">
 
 <!-- COUPLE -->
 <section class="couple-section text-center reveal section-soft-gold" style="padding-top:2rem !important;">
-  <div class="w-full">
-    <img src="images/couple.JPG?v=2" class="couple-glow w-full">
+  <div class="w-full relative overflow-hidden rounded-lg">
+    <div id="coupleSlider" class="flex transition-transform duration-300 ease-in-out">
+      <img src="images/couple.JPG?v=2" class="couple-glow w-full flex-shrink-0">
+      <img src="images/couple-image-2.jpg" class="couple-glow w-full flex-shrink-0">
+      <img src="images/couple-image-1.JPG?v=1" class="couple-glow w-full flex-shrink-0">
+    </div>
+    <!-- Slider indicators -->
+    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <button class="slider-dot w-3 h-3 bg-white rounded-full opacity-70 hover:opacity-100 transition" data-slide="0"></button>
+      <button class="slider-dot w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100 transition" data-slide="1"></button>
+      <button class="slider-dot w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100 transition" data-slide="2"></button>
+    </div>
+    <!-- Navigation arrows -->
+    <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 text-white p-2 rounded-full hover:bg-opacity-30 transition hidden md:block" id="prevBtn">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+    <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 text-white p-2 rounded-full hover:bg-opacity-30 transition hidden md:block" id="nextBtn">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
   </div>
 
   <div class="py-16 px-6 max-w-2xl">
@@ -398,7 +419,7 @@ class="w-56 md:w-80 ganesh-glow float ganesh-scroll mb-0 md:mb-1">
   </h2>
 
   <div class="mb-8">
-    <img src="images/haldi.png" class="couple-glow w-full max-h-screen object-cover">
+    <img src="images/haldi.png" class="couple-glow w-full max-h-screen object-cover" style="object-position: center bottom;">
   </div>
 
   <div class="max-w-2xl mx-auto px-6">
@@ -613,6 +634,19 @@ class="w-56 md:w-80 ganesh-glow float ganesh-scroll mb-0 md:mb-1">
       <p data-lang="mr" class="font-mr-body text-gray-700 reveal-mr" style="display:none">कामशेत, महाराष्ट्र</p>
     </div>
 
+    <!-- QR Code Section -->
+    <div class="bg-white rounded-lg p-6 mb-6 border-4 border-[#D4AF37] text-center">
+      <h3 data-lang="en" class="text-xl font-bold text-[#800000] mb-4">📍 Scan for Location</h3>
+      <h3 data-lang="mr" class="font-mr-names text-xl font-bold text-[#800000] reveal-mr mb-4" style="display:none">📍 स्थानासाठी स्कॅन करा</h3>
+      
+      <div class="mb-4 bg-white p-2 rounded-lg inline-block">
+        <img src="images/location-qr.png" alt="Location QR Code" class="w-44 h-44 border-2 border-[#800000] rounded">
+      </div>
+      
+      <p data-lang="en" class="text-base text-gray-800 font-semibold">Scan QR code to open in Google Maps</p>
+      <p data-lang="mr" class="font-mr-body text-base text-gray-800 font-semibold reveal-mr" style="display:none">गूगल मॅप्समध्ये उघडण्यासाठी QR कोड स्कॅन करा</p>
+    </div>
+
     <a href="https://www.google.com/maps/search/?api=1&query=Hirkani+Resort+And+Lawn+Kamshet"
        target="_blank"
        class="inline-block bg-[#800000] text-white px-8 py-3 rounded-full tracking-widest text-sm hover:bg-opacity-90 transition">
@@ -703,6 +737,73 @@ window.addEventListener("scroll",()=>{
     }
   });
 });
+
+/* COUPLE SLIDER */
+let currentSlide = 0;
+const slider = document.getElementById('coupleSlider');
+const dots = document.querySelectorAll('.slider-dot');
+const totalSlides = 3;
+
+function goToSlide(slideIndex) {
+  currentSlide = slideIndex;
+  slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+  
+  // Update dots
+  dots.forEach((dot, index) => {
+    dot.classList.toggle('opacity-70', index === slideIndex);
+    dot.classList.toggle('opacity-50', index !== slideIndex);
+  });
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  goToSlide(currentSlide);
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  goToSlide(currentSlide);
+}
+
+// Dot navigation
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    goToSlide(parseInt(dot.dataset.slide));
+  });
+});
+
+// Arrow navigation
+document.getElementById('nextBtn')?.addEventListener('click', nextSlide);
+document.getElementById('prevBtn')?.addEventListener('click', prevSlide);
+
+// Touch/Swipe support
+let touchStartX = 0;
+let touchEndX = 0;
+
+slider.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+slider.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const swipeThreshold = 50;
+  const diff = touchStartX - touchEndX;
+  
+  if (Math.abs(diff) > swipeThreshold) {
+    if (diff > 0) {
+      nextSlide(); // Swipe left, go to next
+    } else {
+      prevSlide(); // Swipe right, go to previous
+    }
+  }
+}
+
+// Auto-play (optional)
+setInterval(nextSlide, 5000); // Change slide every 5 seconds
 
 /* SOUND SYNC */
 let played=false;
